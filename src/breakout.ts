@@ -1,12 +1,11 @@
-import {CanvasFunctions} from "./canvasFunctions";
 
 export class Breakout {
   private heading = 'Hello!'
   private canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement
   private context: CanvasRenderingContext2D
-  
 
   attached() {
+    this.context = this.canvas.getContext('2d')
     //block
     this.context.beginPath()
     this.context.rect(210, 470, 60, 15)
