@@ -4,12 +4,15 @@ export class Breakout {
   private heading = 'Hello!'
   private canvas: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement
   private context: CanvasRenderingContext2D
+  private x: number
+  private y: number
 
   attached() {
     this.context = this.canvas.getContext('2d')
+    this.x = this.canvas.width/2
+    this.y = this.canvas.height-30
     //block
-    this.renderPlayer()
-    this.draw()
+    setInterval(()=>this.draw(), 10)
   }
 
   renderPlayer(){
@@ -25,17 +28,19 @@ export class Breakout {
   renderBall() {
     //ball
     this.context.beginPath()
-    this.context.arc(210, 420, 10, 0, Math.PI*2, false)
+    this.context.arc(this.x, this.y, 10, 0, Math.PI*2, false)
     this.context.fillStyle = '#bf6666'
     this.context.fill()
     this.context.strokeStyle = '#000'
     this.context.stroke()
     this.context.closePath()
-    console.log('drawing...')
   }
 
   draw() {
-    setInterval(() => this.renderBall(), 10)
+    this.renderBall()
+    // ball movement
+    this.x += 2
+    this.y -= 2
   }
 
 }
