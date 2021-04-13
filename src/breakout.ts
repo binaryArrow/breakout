@@ -1,3 +1,4 @@
+import {setInterval} from "timers";
 
 export class Breakout {
   private heading = 'Hello!'
@@ -7,6 +8,11 @@ export class Breakout {
   attached() {
     this.context = this.canvas.getContext('2d')
     //block
+    this.renderPlayer()
+    this.draw()
+  }
+
+  renderPlayer(){
     this.context.beginPath()
     this.context.rect(210, 470, 60, 15)
     this.context.fillStyle = 'rgba(100,174,177,0.77)'
@@ -14,19 +20,22 @@ export class Breakout {
     this.context.strokeStyle = '#000'
     this.context.stroke()
     this.context.closePath()
-
   }
 
-  // renderBall() {
-  //   //ball
-  //   this.context.beginPath()
-  //   this.context.arc(210, 420, 10, 0, Math.PI*2, false)
-  //   this.context.fillStyle = '#bf6666'
-  //   this.context.fill()
-  //   this.context.strokeStyle = '#000'
-  //   this.context.stroke()
-  //   this.context.closePath()
-  //
-  // }
+  renderBall() {
+    //ball
+    this.context.beginPath()
+    this.context.arc(210, 420, 10, 0, Math.PI*2, false)
+    this.context.fillStyle = '#bf6666'
+    this.context.fill()
+    this.context.strokeStyle = '#000'
+    this.context.stroke()
+    this.context.closePath()
+    console.log('drawing...')
+  }
+
+  draw() {
+    setInterval(() => this.renderBall(), 10)
+  }
 
 }
