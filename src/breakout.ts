@@ -22,7 +22,7 @@ export class Breakout {
     this.coordinates.y = this.canvas.height-30
     this.coordinates.dx = 2
     this.coordinates.dy = -2
-    this.ball = new Ball(this.coordinates,8, this.canvas )
+    this.ball = new Ball(this.coordinates,8, this.canvas, this.player )
     this.player = new Player(75, 10, this.canvas)
 
 

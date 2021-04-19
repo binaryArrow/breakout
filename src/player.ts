@@ -15,10 +15,11 @@ export class Player {
     this.width = width
     this.height = height
     this.startingPointFromX = (canvas.width - width)/2
+    this.controls.activate()
   }
 
   drawPlayer(context: CanvasRenderingContext2D):void {
-    console.log(this.controls.rightPressed)
+    this.move()
 
     context.beginPath()
     context.rect(this.startingPointFromX, (this.canvas.height - this.height - 4) , this.width, this.height)
@@ -29,5 +30,20 @@ export class Player {
     context.closePath()
   }
 
+  move(): void {
+    if(this.controls.rightPressed){
+      this.startingPointFromX += 3
+
+      if(this.startingPointFromX + this.width > this.canvas.width)
+        this.startingPointFromX -= 3
+    }
+
+    if(this.controls.leftPressed) {
+      this.startingPointFromX -= 3
+
+      if(this.startingPointFromX < 0)
+        this.startingPointFromX += 3
+    }
+  }
 
 }

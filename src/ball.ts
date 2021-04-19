@@ -1,14 +1,17 @@
 import {Coordinates} from "./coordinates";
+import {Player} from "./player";
 
 export class Ball {
   canvas: HTMLCanvasElement
   coordinates: Coordinates
   radius: number
+  player: Player
 
-  constructor(coordinates: Coordinates, radius: number, canvas: HTMLCanvasElement) {
+  constructor(coordinates: Coordinates, radius: number, canvas: HTMLCanvasElement, player: Player) {
     this.canvas = canvas
     this.coordinates = coordinates
     this.radius = radius
+    this.player = player
   }
 
   drawBall(context: CanvasRenderingContext2D): void{
