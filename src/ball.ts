@@ -6,6 +6,7 @@ export class Ball {
   coordinates: Coordinates
   radius: number
   player: Player
+  touchedBottom = false
 
   constructor(coordinates: Coordinates, radius: number, canvas: HTMLCanvasElement, player: Player) {
     this.canvas = canvas
@@ -48,10 +49,12 @@ export class Ball {
         this.coordinates.y += this.coordinates.dy
         break
       }
+      // contact bottom
       case (this.coordinates.y > this.canvas.height - this.radius): {
         this.coordinates.dy = -2
         this.coordinates.x += this.coordinates.dx
         this.coordinates.y += this.coordinates.dy
+        this.touchedBottom = true
         break
       }
       default : {

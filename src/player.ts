@@ -22,7 +22,7 @@ export class Player {
     this.move()
 
     context.beginPath()
-    context.rect(this.startingPointFromX, (this.canvas.height - this.height - 4) , this.width, this.height)
+    context.rect(this.startingPointFromX, (this.canvas.height - this.height - 10) , this.width, this.height)
     context.fillStyle = 'rgba(100,174,177,0.77)'
     context.fill()
     context.strokeStyle = '#000'

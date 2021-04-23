@@ -1,8 +1,8 @@
 export class Controls {
   rightPressed = false
   leftPressed = false
-  keyDown
-  keyUp
+  private readonly keyDown
+  private readonly keyUp
 
   constructor() {
     this.keyUp = this.keyUpListener.bind(this)
