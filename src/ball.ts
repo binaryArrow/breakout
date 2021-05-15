@@ -5,25 +5,31 @@ export class Ball {
   canvas: HTMLCanvasElement
   coordinates: Coordinates
   radius: number
-  player: Player
   touchedBottom = false
 
-  constructor(coordinates: Coordinates, radius: number, canvas: HTMLCanvasElement, player: Player) {
+  constructor(coordinates: Coordinates, radius: number, canvas: HTMLCanvasElement) {
     this.canvas = canvas
     this.coordinates = coordinates
     this.radius = radius
-    this.player = player
   }
 
-  drawBall(context: CanvasRenderingContext2D): void{
+  drawBall(context: CanvasRenderingContext2D): void {
     this.checkCollusion()
     context.beginPath()
-    context.arc(this.coordinates.x, this.coordinates.y, this.radius, 0, Math.PI*2, false)
+    context.arc(this.coordinates.x, this.coordinates.y, this.radius, 0, Math.PI * 2, false)
     context.fillStyle = '#bf6666'
     context.fill()
     context.strokeStyle = '#000'
     context.stroke()
     context.closePath()
+  }
+
+  touchedPlayer(player: Player) {
+    if (this.coordinates.y + this.coordinates.dy >= this.canvas.height - this.radius - player.height-9) {
+      if (this.coordinates.x > player.startingPointFromX && this.coordinates.x < player.startingPointFromX + player.width ) {
+        this.coordinates.dy = -this.coordinates.dy;
+      }
+    }
   }
 
   checkCollusion(): void {

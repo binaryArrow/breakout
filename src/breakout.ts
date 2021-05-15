@@ -37,7 +37,7 @@ export class Breakout {
     this.coordinates.y = this.canvas.height-30
     this.coordinates.dx = 2
     this.coordinates.dy = -2
-    this.ball = new Ball(this.coordinates,8, this.canvas, this.player)
+    this.ball = new Ball(this.coordinates,8, this.canvas)
     this.player = new Player(75, 10, this.canvas)
 
     this.interval
@@ -46,7 +46,9 @@ export class Breakout {
   draw(): void {
     this.touchedBottom = this.ball.touchedBottom
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    this.ball.touchedPlayer(this.player)
     this.ball.drawBall(this.context)
     this.player.drawPlayer(this.context)
+
   }
 }

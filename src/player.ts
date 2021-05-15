@@ -9,7 +9,6 @@ export class Player {
   startingPointFromX: number
   controls = new Controls()
 
-
   constructor(width: number, height: number, canvas: HTMLCanvasElement) {
     this.canvas = canvas
     this.width = width
